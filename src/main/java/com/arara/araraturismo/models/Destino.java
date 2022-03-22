@@ -27,9 +27,9 @@ public class Destino {
     @Size(max = 15)
     private String numero;
 
-    private double latitude;
+    private String latitude;
 
-    private double longitude;
+    private String longitude;
     @NotBlank
     @Size(max = 200)
     private String descricao;
@@ -37,7 +37,7 @@ public class Destino {
     public Destino() {
     }
 
-    public Destino(String cidade, String estado, String bairro, String rua, String numero, double latitude, double longitude, String descricao) {
+    public Destino(String cidade, String estado, String bairro, String rua, String numero, String latitude, String longitude, String descricao) {
         this.cidade = cidade;
         this.estado = estado;
         this.bairro = bairro;
@@ -96,19 +96,19 @@ public class Destino {
         this.numero = numero;
     }
 
-    public double getLatitude() {
+    public String getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(double latitude) {
+    public void setLatitude(String latitude) {
         this.latitude = latitude;
     }
 
-    public double getLongitude() {
+    public String getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(double longitude) {
+    public void setLongitude(String longitude) {
         this.longitude = longitude;
     }
 

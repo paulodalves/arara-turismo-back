@@ -51,6 +51,20 @@ public class DestinoController {
         return new ResponseEntity<>(_destino, HttpStatus.CREATED);
     }
 
+    @PutMapping("/destinos/{id}")
+    public ResponseEntity<Destino> atualizarDestino(@PathVariable("id") long id, @RequestBody Destino destino) {
+        Destino _destino = destinoRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Destino não encontrado com id = " + id));
+        _destino.setCidade(destino.getCidade());
+        _destino.setEstado(destino.getEstado());
+        _destino.setRua(destino.getRua());
+        _destino.setNumero(destino.getNumero());
+        _destino.setLatitude(destino.getLatitude());
+        _destino.setLongitude(destino.getLongitude());
+        _destino.setDescricao(destino.getDescricao());
+        return new ResponseEntity<>(destinoRepository.save(_destino), HttpStatus.OK);
+    }
+
     @DeleteMapping("/destinos/{id}")
     public ResponseEntity<HttpStatus> deletarDestino(@PathVariable("id") long id) {
 
