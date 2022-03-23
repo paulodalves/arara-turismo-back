@@ -40,7 +40,10 @@ public class DestinoController {
 
     @PostMapping("/destinos")
     public ResponseEntity<Destino> cadastrarDestino(@RequestBody Destino destino) {
-        Destino _destino = destinoRepository.save(new Destino(destino.getCidade(),
+        Destino _destino = destinoRepository.save(new Destino(destino.getNome(),
+                destino.getTelefone(),
+                destino.getEmail(),
+                destino.getCidade(),
                 destino.getEstado(),
                 destino.getBairro(),
                 destino.getRua(),
@@ -55,6 +58,9 @@ public class DestinoController {
     public ResponseEntity<Destino> atualizarDestino(@PathVariable("id") long id, @RequestBody Destino destino) {
         Destino _destino = destinoRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Destino não encontrado com id = " + id));
+        _destino.setNome(destino.getNome());
+        _destino.setTelefone(destino.getTelefone());
+        _destino.setEmail(destino.getEmail());
         _destino.setCidade(destino.getCidade());
         _destino.setEstado(destino.getEstado());
         _destino.setRua(destino.getRua());
